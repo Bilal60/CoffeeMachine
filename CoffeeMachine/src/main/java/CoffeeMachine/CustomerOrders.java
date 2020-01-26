@@ -8,12 +8,12 @@ public class CustomerOrders {
 	//Constructeur
 	public CustomerOrders(String command, int money){
 		this.command = command;
-		this.money = money;
+		this.money = money; //en cents
 	}
 
 
 	public String drinkMakerMessage() {
-		//separartion de la chaine de caractères command suivant un délimiteur
+		//separartion de la chaine de caractères qui se trouve dans command suivant le délimiteur deux points (:)
 		String splitedCommand[] = this.command.split(":", -1);
 		String drinks ="", suggarAndStick ="", message ="";
 		int missing = 0;
@@ -34,15 +34,22 @@ public class CustomerOrders {
         	drinks = "extra hot coffee";
         }
 
-        
+        /*si dans une commande ce qui vient entre le 1er deux points (:) et le 2e deux points est vide (exemple : "H::") et
+          que le 1er caratere est différent de "O" (orange juice) alors on execute ce qui suit*/
         if(splitedCommand[1].equals("") && !splitedCommand[0].equals("O")){
         	suggarAndStick = " with no sugar - and therefore no stick";
-        }else if(splitedCommand[1].equals("1")){
+        }
+        
+        if(splitedCommand[1].equals("1")){
         	suggarAndStick = " with 1 sugar and a stick";
-        }else if(splitedCommand[1].equals("2")){
+        }
+        
+        if(splitedCommand[1].equals("2")){
         	suggarAndStick = " with 2 sugars and a stick";
         }
         
+        /*si drinks est resté vide alors la somme entré par le client était insufisant,
+          alors suivant la boisson on calcule le manque à régler*/
         if(drinks == "") {
         	if(splitedCommand[0].equals("T") || splitedCommand[0].equals("Th")) {
         		missing = 40 - this.money;
