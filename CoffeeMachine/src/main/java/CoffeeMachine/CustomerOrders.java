@@ -24,34 +24,42 @@ public class CustomerOrders {
         	drinks = "chocolate";
         }else if(splitedCommand[0].equals("C") && this.money >= 60){
         	drinks = "coffee";
+        }else if(splitedCommand[0].equals("O") && this.money >= 60){
+        	drinks = "orange juice";
+        }else if(splitedCommand[0].equals("Th") && this.money >= 40){
+        	drinks = "extra hot tea";
+        }else if(splitedCommand[0].equals("Hh") && this.money >= 50){
+        	drinks = "extra hot chocolate";
+        }else if(splitedCommand[0].equals("Ch") && this.money >= 60){
+        	drinks = "extra hot coffee";
         }
 
         
-        if(splitedCommand[1].equals("")){
-        	suggarAndStick = "no sugar - and therefore no stick";
+        if(splitedCommand[1].equals("") && !splitedCommand[0].equals("O")){
+        	suggarAndStick = " with no sugar - and therefore no stick";
         }else if(splitedCommand[1].equals("1")){
-        	suggarAndStick = "1 sugar and a stick";
+        	suggarAndStick = " with 1 sugar and a stick";
         }else if(splitedCommand[1].equals("2")){
-        	suggarAndStick = "2 sugars and a stick";
+        	suggarAndStick = " with 2 sugars and a stick";
         }
         
         if(drinks == "") {
-        	if(splitedCommand[0].equals("T")) {
+        	if(splitedCommand[0].equals("T") || splitedCommand[0].equals("Th")) {
         		missing = 40 - this.money;
         	}
         	
-        	if(splitedCommand[0].equals("H")) {
+        	if(splitedCommand[0].equals("H") || splitedCommand[0].equals("Hh")) {
         		missing = 50 - this.money;
         	}
         	
-        	if(splitedCommand[0].equals("C")) {
+        	if(splitedCommand[0].equals("C") || splitedCommand[0].equals("O") || splitedCommand[0].equals("Ch")) {
         		missing = 60 - this.money;
         	}
         	
         	return message = "Missing "+missing+" cents";
         	
         }else {
-        	return message = "Drink maker makes 1 "+drinks+" with "+suggarAndStick;
+        	return message = "Drink maker makes 1 "+drinks+suggarAndStick;
         }
 	}
 	

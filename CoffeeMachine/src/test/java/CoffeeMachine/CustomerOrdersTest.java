@@ -108,6 +108,74 @@ class CustomerOrdersTest {
 		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui dit qu'il manque 40 cents");
 	}
 	
+	/******************************************************************************************************************************/
+	
+	@Test
+	void testOrangeJuice() {
+		CustomerOrders order1 = new CustomerOrders("O::", 60);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 orange juice";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 jus d'orange");
+	}
+	
+	@Test
+	void testExtraHotCoffeeNoSugar() {
+		CustomerOrders order1 = new CustomerOrders("Ch::", 60);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 extra hot coffee with no sugar - and therefore no stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 café extra chaud, 0 sucre et une touillette");
+	}
+	
+	@Test
+	void testExtraHotChocolateOneSugar() {
+		CustomerOrders order1 = new CustomerOrders("Hh:1:0", 50);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 extra hot chocolate with 1 sugar and a stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 chocolat extra chaud, 1 sucre et 1 touillette");
+	}
+	
+	@Test
+	void testExtraHotTeaTwoSugar() {
+		CustomerOrders order1 = new CustomerOrders("Th:2:0", 40);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 extra hot tea with 2 sugars and a stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 thé extra chaud, 2 sucre et 1 toullette");
+	}
+	
+	
+	/****************************************/
+	
+	@Test
+	void testOrangeJuiceNotEnoughMoney() {
+		CustomerOrders order1 = new CustomerOrders("O::", 30);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Missing 30 cents";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui dit qu'il manque 30 cents");
+	}
+	
+	@Test
+	void testExtraHotCoffeeNoSugarNotEnoughMoney() {
+		CustomerOrders order1 = new CustomerOrders("Ch::", 40);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Missing 20 cents";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui dit qu'il manque 20 cents");
+	}
+	
+	@Test
+	void testExtraHotChocolateOneSugarNotEnoughMoney() {
+		CustomerOrders order1 = new CustomerOrders("Hh:1:0", 10);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Missing 40 cents";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui dit qu'il manque 40 cents");
+	}
+	
+	@Test
+	void testExtraHotTeaTwoSugarNotEnoughMoney() {
+		CustomerOrders order1 = new CustomerOrders("Th:2:0", 30);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Missing 10 cents";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui dit qu'il manque 10 cents");
+	}
 	
 
 }
