@@ -29,5 +29,33 @@ class CustomerOrdersTest {
 		String expectedMessage = "Drink maker makes 1 chocolate with no sugar - and therefore no stick";
 		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 chocolat (chocolate), 0 sucre (sugar) et 0 touillette (stick)");
 	}
+	
+	/*******************************************************************************************************/
+	
+	@Test
+	void testTeaOneSugar() {
+		CustomerOrders order1 = new CustomerOrders("T:1:0");
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 tea with 1 sugar and a stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 thé (tea), 1 sucre (sugar) et 1 touillette (stick)");
+	}
+	
+	@Test
+	void testCoffeeOneSugar() {
+		CustomerOrders order1 = new CustomerOrders("C:1:0");
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 coffee with 1 sugar and a stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 café (coffee), 1 sucre (sugar) et 1 touillette (stick)");
+	}
+	
+	@Test
+	void testChocolateOneSugar() {
+		CustomerOrders order1 = new CustomerOrders("H:1:0");
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 chocolate with 1 sugar and a stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 chocolat (chocolate), 1 sucre (sugar) et 1 touillette (stick)");
+	}
+	
+	
 
 }

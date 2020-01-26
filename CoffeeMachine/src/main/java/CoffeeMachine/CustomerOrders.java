@@ -27,6 +27,8 @@ public class CustomerOrders {
 
             if(splitedCommand[1].equals("")){
             	suggarAndStick = "no sugar - and therefore no stick";
+            }else if(splitedCommand[1].equals("1")){
+            	suggarAndStick = "1 sugar and a stick";
             }
 
         }
