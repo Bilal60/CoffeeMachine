@@ -56,6 +56,32 @@ class CustomerOrdersTest {
 		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 chocolat (chocolate), 1 sucre (sugar) et 1 touillette (stick)");
 	}
 	
+	/*******************************************************************************************************/
+	
+	@Test
+	void testTeaTwoSugar() {
+		CustomerOrders order1 = new CustomerOrders("T:2:0");
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 tea with 2 sugars and a stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 thé (tea), 2 sucres (sugar) et 1 touillette (stick)");
+	}
+	
+	@Test
+	void testCoffeeTwoSugar() {
+		CustomerOrders order1 = new CustomerOrders("C:2:0");
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 coffee with 2 sugars and a stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 café (coffee), 2 sucres (sugar) et 1 touillette (stick)");
+	}
+	
+	@Test
+	void testChocolateTwoSugar() {
+		CustomerOrders order1 = new CustomerOrders("H:2:0");
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Drink maker makes 1 chocolate with 2 sugars and a stick";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 chocolat (chocolate), 2 sucres (sugar) et 1 touillette (stick)");
+	}
+	
 	
 
 }
