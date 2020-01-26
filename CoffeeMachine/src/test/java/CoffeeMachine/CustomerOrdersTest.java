@@ -82,6 +82,32 @@ class CustomerOrdersTest {
 		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui contient 1 chocolat (chocolate), 2 sucres (sugar) et 1 touillette (stick)");
 	}
 	
+	/*****************************  Les 3 tests suivants sont pour tester le nombre de cents manquant  ****************************/
+	
+	@Test
+	void testTeaTwoSugarNotEnoughMoney() {
+		CustomerOrders order1 = new CustomerOrders("T:2:0", 30);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Missing 10 cents";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui dit qu'il manque 10 cents");
+	}
+	
+	@Test
+	void testCoffeeTwoSugarNotEnoughMoney() {
+		CustomerOrders order1 = new CustomerOrders("C:2:0", 40);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Missing 20 cents";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui dit qu'il manque 20 cents");
+	}
+	
+	@Test
+	void testChocolateTwoSugarNotEnoughMoney() {
+		CustomerOrders order1 = new CustomerOrders("H:2:0", 10);
+		String actualMessage = order1.drinkMakerMessage();
+		String expectedMessage = "Missing 40 cents";
+		assertEquals(expectedMessage, actualMessage, "Doit retourner un message qui dit qu'il manque 40 cents");
+	}
+	
 	
 
 }

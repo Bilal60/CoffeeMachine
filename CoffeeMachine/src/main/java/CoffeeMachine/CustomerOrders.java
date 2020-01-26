@@ -16,6 +16,7 @@ public class CustomerOrders {
 		//separartion de la chaine de caractères command suivant un délimiteur
 		String splitedCommand[] = this.command.split(":", -1);
 		String drinks ="", suggarAndStick ="", message ="";
+		int missing = 0;
 
         if(splitedCommand[0].equals("T") && this.money >= 40){
         	drinks = "tea";
@@ -35,7 +36,20 @@ public class CustomerOrders {
         }
         
         if(drinks == "") {
-        	return message = "Missing X cents ";
+        	if(splitedCommand[0].equals("T")) {
+        		missing = 40 - this.money;
+        	}
+        	
+        	if(splitedCommand[0].equals("H")) {
+        		missing = 50 - this.money;
+        	}
+        	
+        	if(splitedCommand[0].equals("C")) {
+        		missing = 60 - this.money;
+        	}
+        	
+        	return message = "Missing "+missing+" cents";
+        	
         }else {
         	return message = "Drink maker makes 1 "+drinks+" with "+suggarAndStick;
         }
