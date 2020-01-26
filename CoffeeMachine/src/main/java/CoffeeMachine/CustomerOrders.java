@@ -13,27 +13,25 @@ public class CustomerOrders {
 	public String drinkMakerMessage() {
 		//separartion de la chaine de caractères command suivant un délimiteur
 		String splitedCommand[] = this.command.split(":", -1);
-		String drinks ="";
-		String suggarAndStick = "";
+		String drinks ="", suggarAndStick ="";
 
-		for (int i = 0; i < splitedCommand.length; i++) {
-            if(splitedCommand[0].equals("T")){
-            	drinks = "tea";
-            }else if(splitedCommand[0].equals("H")){
-            	drinks = "chocolate";
-            }else if(splitedCommand[0].equals("C")){
-            	drinks = "coffee";
-            }
-
-            if(splitedCommand[1].equals("")){
-            	suggarAndStick = "no sugar - and therefore no stick";
-            }else if(splitedCommand[1].equals("1")){
-            	suggarAndStick = "1 sugar and a stick";
-            }else if(splitedCommand[1].equals("2")){
-            	suggarAndStick = "2 sugars and a stick";
-            }
-
+        if(splitedCommand[0].equals("T")){
+        	drinks = "tea";
+        }else if(splitedCommand[0].equals("H")){
+        	drinks = "chocolate";
+        }else if(splitedCommand[0].equals("C")){
+        	drinks = "coffee";
         }
+
+        
+        if(splitedCommand[1].equals("")){
+        	suggarAndStick = "no sugar - and therefore no stick";
+        }else if(splitedCommand[1].equals("1")){
+        	suggarAndStick = "1 sugar and a stick";
+        }else if(splitedCommand[1].equals("2")){
+        	suggarAndStick = "2 sugars and a stick";
+        }
+
         String message = "Drink maker makes 1 "+drinks+" with "+suggarAndStick;
         return message;
 	}
